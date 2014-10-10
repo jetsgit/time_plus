@@ -22,6 +22,20 @@ describe "class AddTime " do
     it "returns a formatted date that has been incremented with correct time period" do
       expect(add_time_obj.parse_time).to_equal result_time
     end
-
   end
+  # Specific failures on fields not tested, as one pattern match 
+  # failure in grep will fail all sub-pattern matching
+  describe "using invalid input" do
+    let(:hours) {0}
+    let(:minutes) {40}
+    let(:am_or_pm) {""}
+    let(:add_minutes) {150}
+    let(:input_time) {" #{hours}:#{minutes} #{am_or_pm}"} 
+    let(:add_time_obj) {IncrementTime::AddTime.new(input_time, add_minutes)}
+    let(:returned_errors) {[ "Must indicate am or pm.","Time hours must be entered in 12 hour format.", "Minutes must not exceed 60." ] }
+    it "returns a formatted date that has been incremented with correct time period" do
+      expect(add_time_obj.parse_time).to_equal returned_errors
+    end
+  end
+
 end
