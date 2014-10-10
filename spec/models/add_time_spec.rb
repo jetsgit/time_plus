@@ -33,6 +33,7 @@ describe "class AddTime " do
     let(:input_time) {" #{hours}:#{minutes} #{am_or_pm}"} 
     let(:add_time_obj) {IncrementTime::AddTime.new(input_time, add_minutes)}
     let(:returned_errors) {[ "Must indicate am or pm.","Time hours must be entered in 12 hour format.", "Minutes must not exceed 60." ] }
+
     it "returns a formatted date that has been incremented with correct time period" do
       expect(add_time_obj.parse_time).to_equal returned_errors
     end
