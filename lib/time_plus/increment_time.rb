@@ -29,7 +29,7 @@ module IncrementTime
       if  @period != "am" && @period != "pm" 
         @errors << "Must indicate am or pm."
       end
-      if ( @hours[0] > 12  )  
+      if ( @hours[0] > 12  || @hours == nil)  
         @errors << "Time hours must be entered in 12 hour format."
       end
       if @minutes > 59 || @minutes == nil  
