@@ -32,7 +32,7 @@ describe "class AddTime " do
     let(:add_time_obj) {IncrementTime::AddTime.new(input_time, add_minutes)}
     let(:returned_errors) {[ "Must indicate am or pm.","Time hours must be entered in 12 hour format.", "Minutes must not exceed 60." ] }
 
-    it "returns failure messages for all fields" do
+    it "returns failure messages for all fields if any input is bad" do
       expect(add_time_obj.parse_time).to_equal returned_errors
     end
   end
