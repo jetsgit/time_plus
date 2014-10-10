@@ -26,13 +26,13 @@ module IncrementTime
     private
 
     def  correct_time_input?
-      if  @period != "am" && @period != "pm" 
+      if  @period == nil || ( @period != "am" && @period != "pm" ) 
         @errors << "Must indicate am or pm."
       end
-      if ( @hours[0] > 12  || @hours == nil)  
+      if ( @hours == nil || @hours[0] > 12 )  
         @errors << "Time hours must be entered in 12 hour format."
       end
-      if @minutes > 59 || @minutes == nil  
+      if @minutes == nil || @minutes > 59    
         @errors << "Minutes must not exceed 60."
       end
       true unless @errors.any?
