@@ -1,5 +1,3 @@
-$:.unshift File.expand_path("../../lib", __FILE__)
-
 require 'minitest/autorun'
 require 'minitest/spec/expect'
 require_relative '../../lib/time_plus/increment_time'
