@@ -1,20 +1,19 @@
 module IncrementTime
 
   ##### USAGE: Create a new AddTime object, passing it a string in format "[H]H:MM AM|PM", 
-  #            and Integer number of minutes to increment time by.
+  #            and integer number of minutes to increment time by.
   #            Returns the time incremented and with correct period of am or pm. 
   #####
 
   class AddTime
     def  initialize(time, add_minutes)
-      @time_current = time
-      @add_minutes = add_minutes
+      @time_current, @add_minutes = time, add_minutes 
       @errors = []
     end
 
     def parse_time
       arr = [@time_current]
-      arr.grep(/(\d\d?):(\d\d?)\ ?(am|pm)/i) { @hours = $1.to_i, @minutes = $2.to_i, @period = $3.downcase }
+      arr.grep(/(\d\d?):(\d\d)\ ?(am|pm)/i) { @hours = $1.to_i, @minutes = $2.to_i, @period = $3.downcase }
       if correct_time_input?
         display_minutes = minutes_convert.last
         display_hours   = hours_convert.last == 0 ? 12 : hours_convert.last
@@ -30,7 +29,7 @@ module IncrementTime
       if  @period != "am" && @period != "pm" 
         @errors << "Must indicate am or pm."
       end
-      if ( @hours[0] > 12 )  
+      if ( @hours[0] > 12  )  
         @errors << "Time hours must be entered in 12 hour format."
       end
       if @minutes > 59 || @minutes == nil  
