@@ -2,7 +2,7 @@ $:.unshift File.expand_path("../../lib", __FILE__)
 
 require 'minitest/autorun'
 require 'minitest/spec/expect'
-require 'time_plus/increment_time'
+require_relative '../../lib/time_plus/increment_time'
 
 ### NOTE: There is a sentiment that testing private methods is not in general a good
 ###       practice or necessary since they are outside the API. Therefore, only a  

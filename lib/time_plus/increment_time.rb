@@ -17,7 +17,7 @@ module IncrementTime
       if correct_time_input?
         display_minutes = minutes_convert.last
         display_hours   = hours_convert.last == 0 ? 12 : hours_convert.last
-        puts "#{display_hours}:#{display_minutes} #{am_or_pm}"
+        "#{display_hours}:#{display_minutes} #{am_or_pm}"
       else
         output_errors
       end
